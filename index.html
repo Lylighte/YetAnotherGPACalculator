@@ -1,622 +1,87 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en-US">
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8"> 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="sndnyang" />
-<meta name="copyright" content="sndnyang" />
-
-<meta property="og:type" content="article" />
-<meta name="twitter:card" content="summary">
-
-<link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="//cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="//cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-
-<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
-<link href="static/css/ListTabMenu.css" rel="stylesheet">
-<style>
-body { padding-top: 50px; padding-bottom: 10px; }
-</style>
-
-<link rel="stylesheet" href="//bdimg.share.baidu.com/static/api/css/share_style1_24.css">
-<link rel="stylesheet" type="text/css" href="/theme/css/style.css" media="screen">
-<title>GPA calculator for all </title>
-<script src="static/js/function.js"></script>
-<script src="static/js/UploadFile.js"></script>
-<script src="static/js/file.js"></script>
-<link rel="stylesheet" type="text/css" href="static/css/gpa.css">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GPA 算法对照与高校绩点改制动态：展示常见与官方的 GPA 换算算法">
+  <title>GPA 算法对照 | gpa.ac.cn</title>
+  <link rel="stylesheet" href="static/css/style.css">
 </head>
-<body onload="init()">
-<div id="content-sans-footer">
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="/"><span class=site-name>懒龙谷</span></a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav pull-right top-menu">
-                        <li ><a href="/">Home</a></li>
-                        <li ><a href="http://www.zhimind.com">zhimind home</a></li>
-                        <li ><a href="/categories.html">Categories</a></li>
-                        <li ><a href="/tags.html">Tags</a></li>
-                        <li ><a href="/archives.html">Archives</a></li>
-                        <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">留学<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li ><a href="http://www.zhimind.com/college.html">学校库</a></li>
-                            <li ><a href="http://www.zhimind.com/major.html">专业库</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">工具</li>
-                            <li><a href="/gpa_calculator.html">GPA计算器</a></li>
-                            <li><a href="http://www.zhimind.com/reciteWord.html">脑洞背单词</a></li>
-                        </ul>
-                        </li>
-                        <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<body>
+  <header class="site-header">
+    <h1>GPA 算法对照</h1>
+    <p class="subtitle">对比展示各种常见的 GPA 换算算法；另附一个简易计算器。</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" id="tab-alg">算法对照</button>
+    <button class="tab-btn" id="tab-reform">一些改制</button>
+  </nav>
+
+  <main class="container">
+    <section id="panel-reform" class="hidden">
+      <div class="card">
+        <h2>部分高校绩点/评价制度改革动态（2020–2025）</h2>
+        <ul class="reform-list">
+          <li>
+            <strong>清华大学</strong>（2024）——笃实、秀钟等书院发布公告：大一年级秋季学期成绩不计入 GPA 计算，成绩在成绩单如实记载，但不影响奖学金评定与推免；此前已实施的 A+~F 12 档等级制可见《学生成绩记载规定》。
+            <br><a href="https://qxcm.tsjc.tsinghua.edu.cn/pc/folder120/folder126/2024-12-11/sBX3EDIhoN4qOjaY.html" target="_blank" rel="noopener">清青评论：第一学期成绩不计入GPA（校媒）</a> · <a href="https://qiyuan.tsinghua.edu.cn/ueditor/jsp/upload/20150909/35281441779611129.pdf" target="_blank" rel="noopener">《学生成绩记载规定》PDF</a>
+          </li>
+          <li>
+            <strong>北京大学</strong>（2022–2025）——生命科学学院 2022 年试点 ABCDF 五等级制并停止计算 GPA，用优秀率（A%）和优良率（AB%）替代；2025 年秋季起：2025 级学生各类学业评价不再使用绩点、等级制成绩不换算绩点、取消优秀率指导指标、每学期可选一门课以 P/NP 合格制记载。
+            <br><a href="https://www.bio.pku.edu.cn/ug/notice/181/16352.html" target="_blank" rel="noopener">生科院试点方案（官方）</a> · <a href="https://provost.pku.edu.cn/xwdt/969bde065f894db1bde00efcfbab7af2.htm" target="_blank" rel="noopener">教务长办公室改革进展（官方）</a> · <a href="https://dean.pku.edu.cn/web/rules_info.php?id=12" target="_blank" rel="noopener">《本科生成绩评定和记载办法》2025 修订（官方）</a>
+          </li>
+          <li>
+            <strong>浙江大学</strong>（2022–2024）——2024 办法确认双轨：校内沿用五分制 15 档绩点；2022 级起出国成绩单改用 4.3 制折算（95→4.3 … 60→1.5），2022 级前出国用线性 4 分制。
+            <br><a href="https://meetc.zju.edu.cn/2024/0306/c79045a2885825/page.htm" target="_blank" rel="noopener">《本科课程成绩评定与管理办法》（2024-03）</a> · <a href="https://ugrs.zju.edu.cn/2009/0904/c1665a156936/page.htm" target="_blank" rel="noopener">2022 级前出国算法（官方）</a>
+          </li>
+          <li>
+            <strong>复旦大学</strong>（2024）——新增 A+ 等级，A+ 与 A 合计 ≤30%（A- 不限比例）；非限档绩点动态范围；每生可有 16 学分「试错空间」不计入绩点。
+            <br><a href="https://jwc.fudan.edu.cn/gzzd/list.htm" target="_blank" rel="noopener">教务处规章制度</a> · <a href="https://xxgk.fudan.edu.cn/bd/5c/c5163a48476/page.htm" target="_blank" rel="noopener">《本科生学籍管理规定》（信息公开）</a>
+          </li>
+          <li>
+            <strong>华南理工大学</strong>（2021）——学籍管理办法修订确认：四分制 GPA 按课程班成绩分布动态转换，重考绩点封顶 3.3；校内推免另行使用百分制平均分。
+            <br><a href="https://xxgk.scut.edu.cn/2021/0815/c71a3558/page.htm" target="_blank" rel="noopener">《本科生学籍管理办法（2021 修订）》第三十九条（信息公开）</a>
+          </li>
+          <li>
+            <strong>上海交通大学</strong>（2022–2024 本科口径）——本科百分制/等级制双轨，考查课 P/F 不计积点；等级制课程学积分计算规则于 2024-04 调整。
+            <br><a href="https://jwc.sjtu.edu.cn/info/1482/12870.htm" target="_blank" rel="noopener">学分制修读管理规定（官方）</a> · <a href="https://sjtu-geek.github.io/SJTU-Wiki/undergraduate-study/score.html" target="_blank" rel="noopener">成绩规则整理（学生社区）</a>
+          </li>
+        </ul>
+        <p class="hint">引用指向官方公告/信息公开页面；如与校内最新规定有出入，以所在学校教务处为准。</p>
+      </div>
+    </section>
+
+    <section id="panel-alg">
+      <div id="alg-carousel"></div>
+
+      <p class="card note">
+        <strong>绩点</strong>（Grade Point Average，缩写 GPA）即平均学分绩点，是衡量学业水平的通用量化指标。通用计算公式为<br>
+        GPA = Σ(课程绩点 × 该课程学分) ÷ Σ课程学分<br>
+        学分越高的课程对总绩点的影响越大，因此它是<strong>加权平均</strong>，而不是所有科目分数的简单平均。差异在「如何把百分制分数换算成绩点」：国内高校通行做法有两类——分段对应法（按分数区间查表定绩点，如标准 4.0、各大 4.3 制）和连续公式法（如南大 5.0 制按分数 ÷ 20 直接换算）。另有院校按班级成绩分布排名动态定档（如华南理工）。同一门 85 分的课程，在标准 4.0 下是 3.0，北大官方公式下约 3.5，浙大 4.3 制下是 3.9——横向比较不同算法的 GPA 前务必先对照量表。
+      </p>
+
+      <p class="card note">
+        <strong>关于本站：</strong>本站是一个<strong>非官方的算法对照与改制动态展示</strong>：把若干有据可查的 GPA 换算规则和近年高校学业评价改革并排呈现，便于比较与理解。<strong>本站不提供 GPA 计算工具</strong>，原因是各校口径不同、且规则逐年变化（部分高校已停用绩点），自行换算容易得出与官方证明不一致的结果；如需计算或出具 GPA，请使用所在学校教务处的官方办法、成绩单或指定认证机构（如 WES）。<br>
+        引用均为可公开访问的官方公告/信息服务页面；内容如与校内最新规定有出入，一律以所在学校教务处为准。
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a href="https://github.com/sndnyang/superbGPACalculator" target="_blank" rel="noopener">基于 superbGPACalculator</a>
     </div>
-
-    <div class="container-fluid">
-        <div id="wrap" class="span9">
-            <h1>GPA 计算器calculator</h1>
-            <div id="main">
-                <a href="gpa_calculator_en.html">English version</a>
-                <div id="GPAForm">
-                    <p>通过本程序，可以方便的计算出您所修读的课程的GPA。具体方法是在下面的方框中输入您</p>
-                    <p>修读获得的课程学分和课程分数（如果是等级制的，在下拉框选择对应等级），页面下方会累计加权结果。</p>
-                    <hr>
-                定制文件格式， 学分必选， 三种记分方式中选一种
-                <br>
-                <input type="checkbox" name="select" value="0" checked="checked" >课程名
-                <input type="checkbox" name="select" value="1" checked="checked" >百分制
-                <input type="checkbox" name="select" value="3"                   >等级制
-                <input type="checkbox" name="select" value="2"                   >4分制
-                <input type="checkbox" name="select" value="4" checked="checked" >学分
-                <input type="checkbox" name="select" value="5" checked="checked" >学时
-                <br>
-                文件或下框内容的格式必须与选中字段保持相同顺序（可多不可少）
-                <hr/>
-                    <div>
-                        可上传文件(纯文本txt,csv, 或xls,xlsx)
-                        <input type="file" id="file" onchange="uploadFiles(this.files)">
-                        <div name="image" id="dropbox" style="min-width:300px;min-height:100px;border:3px dashed silver;"></div>  
-
-                        <br>
-                        
-                        请按照格式描述选择字段， 课程名 ? 百分制? 等级制 ? 4分制 ? 学分 ? 学时    ?指代分隔符类型，默认使用空格作为分隔符
-                    </div>
-                </div>
-                <br>
-                <div>
-                    <input type="text" id="type">分隔符类型， 支持逗号、分号、空格、 tab(tab 或\t), 默认使用空格作为分隔符, 
-                </div>
-
-                <hr />
-                也可手输， 上传文件则直接显示。
-                <div> <textarea id="grade" style="border:solid 1px" rows="15" cols="120"></textarea>
-                </div>
-
-                请选择GPA算法
-                <select id="algorithm">
-                    <option value ="s4">标准4.0</option>
-                    <option value ="s41" selected = "selected">改进4.0(1)</option>
-                    <option value ="s42">改进4.0(2)</option>
-                    <option value ="p4">北大4.0</option>
-                    <option value ="c4">加拿大4.3</option>
-                    <option value ="sjt4">上海交大4.3</option>
-                    <option value ="cs4">中科大4.3</option>
-                </select>
-                <br>
-                <a class="btn btn-info" value="计算" onclick="calit();"> 
-                    计算
-                </a>
-
-                <hr />
-
-                <div id="totals">
-                    <label>学分总计：
-                        <input id="sum0" type="text" size="7" maxlength="7" placeholder="请先填表" readonly="readonly" />
-                    </label>
-                    <label>学分*绩点总计：
-                        <input id="sum1" type="text" size="7" maxlength="7" placeholder="请先填表" readonly="readonly" />
-                    </label>
-                    <label>GPA：
-                        <input id="sum2" type="text" size="7" maxlength="7" placeholder="请先填表" readonly="readonly" />
-                    </label>
-                    <label>加权平均分：
-                        <input id="sum3" type="text" size="7" maxlength="7" placeholder="请先填表" readonly="readonly" />
-                    </label>
-                </div>
-
-                <hr />
-                    <div id="content">
-                    </div>
-                <div class="bdsharebuttonbox bdshare-button-style1-24" data-bd-bind="1444449175032">
-                    <a href="#" class="bds_more" data-cmd="more"></a>
-                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                    <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="aside">
-            <div class="section">
-                <h2>如何计算GPA？</h2>
-                <div class="article">
-                    <div class="intro">
-                        <div class="intro_top">
-                            <div class="intro_top_le f14">其他常见算法说明</div>
-                        </div>
-                        <div class="intro_con f12">
-                            <div class="intro_col">
-                                <a class="accordion-toggle" data-toggle="collapse" data-target="#nav-gpa-4-0">
-                                    (1)标准4.0
-                                </a>
-                                <div id="nav-gpa-4-0" class="collapse">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="120">
-                                        <tbody>
-                                        <tr>
-                                            <td>成绩</td>
-                                            <td>等级</td>
-                                            <td>GPA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>100～90</td>
-                                            <td>A</td>
-                                            <td>4.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>89～80</td>
-                                            <td>B</td>
-                                            <td>3.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>79～70</td>
-                                            <td>C</td>
-                                            <td>2.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>69～60</td>
-                                            <td>D</td>
-                                            <td>1.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>59～0</td>
-                                            <td>F</td>
-                                            <td>0</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <a class="accordion-toggle" data-toggle="collapse" data-target="#nav-gpa-4-1">
-                                    (2)改进4.0(1)
-                                </a>
-                                <div id="nav-gpa-4-1" class="collapse">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="120">
-                                        <tbody>
-                                        <tr>
-                                            <td>成绩</td>
-                                            <td>等级</td>
-                                            <td>学分</td>
-                                        </tr>
-                                        <tr>
-                                            <td>100～85</td>
-                                            <td>A</td>
-                                            <td>4.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>84～70</td>
-                                            <td>B</td>
-                                            <td>3.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>69～60</td>
-                                            <td>C</td>
-                                            <td>2.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>59～0</td>
-                                            <td>F</td>
-                                            <td>0</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <a class="accordion-toggle" data-toggle="collapse" data-target="#nav-gpa-4-2">
-                                    (3)改进4.0(2)
-                                </a>
-                                <div id="nav-gpa-4-2" class="collapse">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="120">
-                                        <tbody>
-                                        <tr>
-                                            <td>成绩</td>
-                                            <td>等级</td>
-                                            <td>学分</td>
-                                        </tr>
-                                        <tr>
-                                            <td>100～85</td>
-                                            <td>A</td>
-                                            <td>4.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>84～75</td>
-                                            <td>B</td>
-                                            <td>3.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>74～60</td>
-                                            <td>C</td>
-                                            <td>2.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>59～0</td>
-                                            <td>F</td>
-                                            <td>0</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <a class="accordion-toggle" data-toggle="collapse" data-target="#nav-peking">
-                                    (4)北大4.0
-                                </a>
-                                <div id="nav-peking" class=" collapse">
-                                    <table border="0" cellpadding="0" cellspacing="0">
-                                        <tbody>
-                                        <tr>
-                                            <td>成绩</td>
-                                            <td>等级</td>
-                                            <td>学分</td>
-                                        </tr>
-                                        <tr>
-                                            <td>100～90</td>
-                                            <td>A</td>
-                                            <td>4.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>89～85</td>
-                                            <td>A-</td>
-                                            <td>3.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>84～82</td>
-                                            <td>B+</td>
-                                            <td>3.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>81～78</td>
-                                            <td>B</td>
-                                            <td>3.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>77～75</td>
-                                            <td>B-</td>
-                                            <td>2.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>74～72</td>
-                                            <td>C+</td>
-                                            <td>2.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>71～68</td>
-                                            <td>C</td>
-                                            <td>2.0</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>67～64</td>
-                                            <td>D+</td>
-                                            <td>1.5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>63～60</td>
-                                            <td>D</td>
-                                            <td>1.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>59～0</td>
-                                            <td>F</td>
-                                            <td>0</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <a class="accordion-toggle" data-toggle="collapse" data-target="#nav-canada">
-                                    (5)加拿大4.3
-                                </a>
-                                <div id="nav-canada" class=" collapse">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="240">
-                                        <tbody>
-                                        <tr>
-                                            <td>成绩</td>
-                                            <td>等级</td>
-                                            <td>学分</td>
-                                        </tr>
-                                        <tr>
-                                            <td>100～90</td>
-                                            <td>A+</td>
-                                            <td>4.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>89～85</td>
-                                            <td>A</td>
-                                            <td>4.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>84～80</td>
-                                            <td>A-</td>
-                                            <td>3.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>79～75</td>
-                                            <td>B+</td>
-                                            <td>3.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>74～70</td>
-                                            <td>B</td>
-                                            <td>3.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>69～65</td>
-                                            <td>B-</td>
-                                            <td>2.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>64～60</td>
-                                            <td>C+</td>
-                                            <td>2.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>59～0</td>
-                                            <td>F</td>
-                                            <td>0</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <a class="accordion-toggle" data-toggle="collapse" data-target="#nav-china">
-                                    (6)中科大4.3
-                                </a>
-                                <div id="nav-china" class=" collapse">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="240">
-                                        <tbody>
-                                        <tr>
-                                            <td>成绩</td>
-                                            <td>等级</td>
-                                            <td>学分</td>
-                                        </tr>
-                                        <tr>
-                                            <td>100～95</td>
-                                            <td>A+</td>
-                                            <td>4.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>94～90</td>
-                                            <td>A</td>
-                                            <td>4.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>89～85</td>
-                                            <td>A-</td>
-                                            <td>3.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>84～82</td>
-                                            <td>B+</td>
-                                            <td>3.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>81～78</td>
-                                            <td>B</td>
-                                            <td>3.0</td>
-                                        </tr>  
-                                        <tr>
-                                            <td>77～75</td>
-                                            <td>B-</td>
-                                            <td>2.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>74～72</td>
-                                            <td>C+</td>
-                                            <td>2.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>71～68</td>
-                                            <td>C</td>
-                                            <td>2.0</td>
-                                        </tr>  
-                                        <tr>
-                                            <td>67～65</td>
-                                            <td>C-</td>
-                                            <td>1.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>64～64</td>
-                                            <td>D+</td>
-                                            <td>1.5</td>
-                                        </tr>  
-                                        <tr>
-                                            <td>63～61</td>
-                                            <td>D</td>
-                                            <td>1.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>60～60</td>
-                                            <td>D-</td>
-                                            <td>1.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>59～0</td>
-                                            <td>F</td>
-                                            <td>0</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <a class="accordion-toggle" data-toggle="collapse" data-target="#nav-sjtu">
-                                    (7)上海交大4.3
-                                </a>
-                                <div id="nav-sjtu" class=" collapse">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="240">
-                                        <tbody>
-                                        <tr>
-                                            <td>成绩</td>
-                                            <td>等级</td>
-                                            <td>学分</td>
-                                        </tr>
-                                        <tr>
-                                            <td>100～95</td>
-                                            <td>A+</td>
-                                            <td>4.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>94～90</td>
-                                            <td>A</td>
-                                            <td>4.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>89～85</td>
-                                            <td>A-</td>
-                                            <td>3.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>84～80</td>
-                                            <td>B+</td>
-                                            <td>3.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>79～75</td>
-                                            <td>B</td>
-                                            <td>3.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>74～70</td>
-                                            <td>B-</td>
-                                            <td>2.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>69～67</td>
-                                            <td>C+</td>
-                                            <td>2.3</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>66～65</td>
-                                            <td>C</td>
-                                            <td>2.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>64～62</td>
-                                            <td>C-</td>
-                                            <td>1.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>61～60</td>
-                                            <td>D</td>
-                                            <td>1.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>59～0</td>
-                                            <td>F</td>
-                                            <td>0</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <a class="accordion-toggle" data-toggle="collapse" data-target="#nav-rank-alg">(8)等级制算法</a>
-                                <div id="nav-rank-alg" class=" collapse">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="240">
-                                        <tbody>
-                                        <tr>
-                                            <td>成绩</td>
-                                            <td>学分</td>
-                                        </tr>
-                                        <tr>
-                                            <td>A</td>
-                                            <td>4.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>A-</td>
-                                            <td>3.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>B+</td>
-                                            <td>3.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>B</td>
-                                            <td>3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>B-</td>
-                                            <td>2.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>C+</td>
-                                            <td>2.3</td>
-                                        </tr>  
-                                        <tr>
-                                            <td>C</td>
-                                            <td>2.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>C-</td>
-                                            <td>1.7</td>
-                                        </tr>
-                                        <tr><td>D+</td>
-                                            <td>1.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>D</td>
-                                            <td>1.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>F</td>
-                                            <td>0</td>
-                                        </tr>
-                                    </div>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <p>绩点（Grade Point Average 缩写GPA）是对学生各门课程所获学分的加权平均值，是衡量学生学业水平的重要指标。</p>
-                        <p>原有四级记分制的成绩：优（85-100）、良（70-84）、及格（60-69）、不及格（未达60分为不及格），按照就高不就低原则对应绩点。</p>
-                        <p>其中“优”对应绩点为4.0,“良”对应绩点为3.0，“及格”对应绩点为“1.3”，“不及格”对应绩点为“0”。两级记分制（合格、不合格）的课程成绩，不纳入课程学分绩点计算。</p>
-                    </div><!-- .article -->
-                </div><!-- .section -->
-            </div><!-- .aside -->
-        </div>
+    <div class="beian">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">
+        苏ICP备2025196817号-2
+      </a>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32130202081408" target="_blank" rel="noopener">
+        苏公网安备32130202081408号
+      </a>
     </div>
-    <div id="footer" class="span12">
-        <p>
-        这是 gpa calculator。 made in China, 杨秀隆 xiulong.yancey.yang@gmail.com  
-        <a href="mailto:sndnyangd@gmail.com">sndnyangd.gmail.com</a>
-        </p>
-    </div>
-</div>
-<script src="https://cdn.bootcss.com/xlsx/0.10.6/xlsx.full.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  </footer>
 
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261726608'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261726608%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-
+  <script src="static/js/main.js"></script>
 </body>
 </html>
